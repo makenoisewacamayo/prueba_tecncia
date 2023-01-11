@@ -1,0 +1,9 @@
+<section [ngClass]="{'encuesta__container': true, 'encuesta__container--mobile': (isHandset$ | async)}">
+  <form [formGroup]="form" class="encuesta__form">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Ingresa tu email">
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
+  </form>
+</section>

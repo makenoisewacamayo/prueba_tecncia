@@ -1,0 +1,7 @@
+<canvas baseChart
+        [ngClass]="{'graph__canvas': true, 'graph__canvas--mobile': (isHandset$ | async)}"
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [type]="barChartType"
+></canvas>

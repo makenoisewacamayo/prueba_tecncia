@@ -1,0 +1,15 @@
+.about__container {
+  width: calc(80vw - 12.5rem);
+  margin-inline: auto;
+  padding: .5rem;
+  margin-block-start: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about__container--mobile {
+  width: 90vw;
+  gap: 1rem;
+}

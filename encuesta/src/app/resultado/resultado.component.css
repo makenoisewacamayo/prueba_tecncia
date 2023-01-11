@@ -1,0 +1,13 @@
+.graph__canvas {
+  margin-block-start: 1rem;
+  margin-inline: auto;
+  width: calc(80vw - 12.5rem);
+  height: fit-content;
+}
+
+
+.graph__canvas--mobile {
+  margin-block-start: 4rem;
+  width: 40ch !important;
+  height: 20ch !important;
+}

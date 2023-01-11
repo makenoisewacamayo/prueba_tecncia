@@ -1,0 +1,14 @@
+.main_container {
+  width: calc(100vw - 12.5rem);
+  display: flex;
+  gap: 1rem;
+  margin-inline: 2rem;
+  margin-block-start: 1rem;
+}
+
+.main_container--mobile {
+  width: 100vw;
+  flex-direction: column;
+  margin-inline: 0;
+  margin-block-start: .5rem;
+}

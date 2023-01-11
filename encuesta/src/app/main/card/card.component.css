@@ -1,0 +1,10 @@
+
+.card__container {
+  max-width: 25rem;
+}
+
+.card__container--mobile {
+  max-width: none;
+  width: auto;
+  margin-inline: 0.4rem;
+}

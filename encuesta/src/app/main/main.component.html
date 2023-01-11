@@ -1,0 +1,13 @@
+<section [ngClass]="{'main_container': true, 'main_container--mobile': (isHandset$ | async)}"  >
+  <ng-container *ngFor="let item of list">
+    <app-card
+      [title]="item.title"
+      [description]="item.description"
+      [route]="item.route"
+      [url]="item.url"
+      [is_mobile]="isHandset$ | async"
+    >
+    </app-card>
+  </ng-container>
+
+</section>
