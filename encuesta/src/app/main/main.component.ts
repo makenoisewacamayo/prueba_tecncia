@@ -22,7 +22,7 @@ export class MainComponent {
       title: "Resultados",
       description: "is simply dummy text of the printing and typesetting industry.",
       route: "ver resultados",
-      url: "/result"
+      url: "/resultado"
     },
     {
       title: "Acerca de",

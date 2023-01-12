@@ -22,3 +22,20 @@
   width: 40ch;
 }
 
+.encuesta__submit {
+  width: 70vw;
+  display: grid;
+  place-content: center;
+}
+
+.encuesta__submit > button {
+  outline: 1px solid #7b1fa2;
+}
+
+.encuesta__submit > button:disabled {
+  outline: 1px solid #424242;
+}
+
+.encuesta__submit--mobile {
+  width: 40ch;
+}

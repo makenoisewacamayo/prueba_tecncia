@@ -1,9 +1,18 @@
 <section [ngClass]="{'encuesta__container': true, 'encuesta__container--mobile': (isHandset$ | async)}">
-  <form [formGroup]="form" class="encuesta__form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Ingresa tu email">
+      <mat-select required formControlName="genero">
+        <mat-option *ngFor="let genero of generos" [value]="genero">{{ genero }}</mat-option>
+      </mat-select>
+      <mat-label><mat-icon>music_note</mat-icon> Generos Músicales</mat-label>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput placeholder="Ingresa tu email" formControlName="email">
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
+    <div [ngClass]="{'encuesta__submit': true, 'encuesta__submit--mobile': (isHandset$ | async)}">
+      <button type="submit" mat-button color="primary" [disabled]="!form.valid">Enviar Encuesta</button>
+    </div>
   </form>
 </section>

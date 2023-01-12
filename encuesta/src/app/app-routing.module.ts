@@ -20,7 +20,7 @@ const routes: Routes = [
     component: EncuestaComponent
   },
   {
-    path: 'result',
+    path: 'resultado',
     component: ResultadoComponent,
   },
   {

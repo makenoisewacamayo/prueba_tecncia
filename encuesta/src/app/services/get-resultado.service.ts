@@ -13,7 +13,7 @@ export class GetResultadoService {
   constructor (private http_client: HttpClient) { }
 
   getResultado(): Observable<Array<ResultadoDataInterface>> {
-    return this.http_client.get<Array<ResultadoDataInterface>>("/resultado")
+    return this.http_client.get<Array<ResultadoDataInterface>>("/resultados")
       .pipe(
          catchError((error) => {
             return throwError(() => new Error('Error at service'))

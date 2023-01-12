@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -7,21 +7,61 @@ import { map, shareReplay, tap } from 'rxjs/operators';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
+// services
+import { GetResultadoService } from '../services/get-resultado.service';
+// interfaces
+import { ResultadoDataInterface } from '../interfaces/general.interfaces';
+
 @Component({
   selector: 'app-resultado',
   templateUrl: './resultado.component.html',
   styleUrls: ['./resultado.component.css']
 })
-export class ResultadoComponent {
+export class ResultadoComponent implements AfterViewInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  constructor(private breakpoint_observer: BreakpointObserver ) {}
+  public barChartData: ChartData<'bar'> = {
+    labels: [],
+    datasets: []
+  };
+
+  public show: boolean = false;
+  public error: boolean = false;
+
+  constructor(
+    private breakpoint_observer: BreakpointObserver,
+    private get_resultado_service:GetResultadoService
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.get_resultado_service.getResultado()
+    .subscribe({
+      next: (response) => {
+        const labels = response.map( (item) => item.genero);
+        const series = response.map( (item) => item.count);
+
+        this.barChartData = {
+          labels: labels,
+         datasets: [{
+          data: series ,
+          label: 'Generos Musicales'
+          }]
+        }
+
+        this.show = true;
+        this.chart?.update();
+      },
+      error: () => this.error = true
+
+    })
+  }
 
   public isHandset$: Observable<boolean> = this.breakpoint_observer.observe(Breakpoints.Handset)
   .pipe(
     map(result => result.matches),
     shareReplay()
   );
+
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -47,13 +87,6 @@ export class ResultadoComponent {
     DataLabelsPlugin
   ];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [ 'Rock', 'Pop', 'Jazz', 'Salsa', 'Clasico'],
-    datasets: [
-      { data: [ 65, 59, 80, 81, 56], label: 'Generos Populares' },
-
-    ]
-  };
 
 
   public randomize(): void {

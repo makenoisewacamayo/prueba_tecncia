@@ -14,3 +14,5 @@ export interface ResultadoDataInterface {
   genero: string;
   count: number;
 }
+
+

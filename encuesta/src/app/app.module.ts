@@ -35,12 +35,12 @@ import { PostEncuestaService } from './services/post-encuesta.service';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
     NgChartsModule
   ],
   providers: [
-    HttpClientModule,
     GetResultadoService,
     PostEncuestaService
   ],
