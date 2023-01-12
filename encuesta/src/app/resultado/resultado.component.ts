@@ -48,10 +48,16 @@ export class ResultadoComponent implements AfterViewInit {
           }]
         }
 
-        this.show = true;
+        setTimeout(() => {
+          this.show = true;
+        })
         this.chart?.update();
       },
-      error: () => this.error = true
+      error: () => {
+        setTimeout(() => {
+          this.error = true;
+        })
+      }
 
     })
   }
